@@ -14,7 +14,7 @@ const app = (0, express_1.default)();
 const port = process.env.PORT || 3001;
 app.use(express_1.default.json());
 const corsOptions = {
-  origin: 'https://finance-tracker-client-dun.vercel.app', // without trailing slash
+  origin: 'https://finance-tracker-client-2gcyj9vp2-chrisdevs-projects.vercel.app', // without trailing slash
   methods: 'GET,POST,PUT,DELETE', // HTTP methods allowed
   credentials: true // Allow credentials (cookies, etc.)
 };
