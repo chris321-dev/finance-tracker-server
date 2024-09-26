@@ -14,10 +14,9 @@ const app = (0, express_1.default)();
 const port = process.env.PORT || 3001;
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({
-    // origin: 'http://localhost:5173', // Allow requests from this origin
-    origin: 'https://finance-tracker-client-dun.vercel.app/',
-    methods: 'GET,POST,PUT,DELETE', // Add allowed HTTP methods if needed
-    credentials: true // Add if you're using cookies/sessions
+    origin: 'https://finance-tracker-client-dun.vercel.app', // without trailing slash
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true
 }));
 const mongoURI = process.env.MONGO_URI || ""; // use the environment variable
 if (!mongoURI) {
