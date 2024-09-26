@@ -12,12 +12,16 @@ const app: Express = express()
 const port = process.env.PORT || 3001
 
 app.use(express.json())
-app.use(cors({
-  origin: 'https://finance-tracker-client-dun.vercel.app',
-  methods: 'GET,POST,PUT,DELETE',
-  credentials: true,
-  proxy: true
-}));
+
+const corsOptions = {
+  origin: 'https://finance-tracker-client-dun.vercel.app', // without trailing slash
+  methods: 'GET,POST,PUT,DELETE', // HTTP methods allowed
+  credentials: true // Allow credentials (cookies, etc.)
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight requests
+
 
 
 const mongoURI: string = process.env.MONGO_URI || "" // use the environment variable
