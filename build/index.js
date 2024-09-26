@@ -13,11 +13,15 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3001;
 app.use(express_1.default.json());
-app.use((0, cors_1.default)({
-    origin: 'https://finance-tracker-client-dun.vercel.app', // without trailing slash
-  methods: 'GET,POST,PUT,DELETE',
-  credentials: true
-}));
+const corsOptions = {
+  origin: 'https://finance-tracker-client-dun.vercel.app', // without trailing slash
+  methods: 'GET,POST,PUT,DELETE', // HTTP methods allowed
+  credentials: true // Allow credentials (cookies, etc.)
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight requests
+
 const mongoURI = process.env.MONGO_URI || ""; // use the environment variable
 if (!mongoURI) {
     console.error("Mongo URI is not defined in the environment file.");
