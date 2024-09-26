@@ -6,7 +6,8 @@
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["node"] // Ensure types are included
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
